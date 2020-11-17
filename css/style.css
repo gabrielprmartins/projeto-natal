@@ -29,16 +29,17 @@ body {
 /*structure*/
 .structure {
     display: grid;
-    grid-template-columns: minmax(150px, 1fr) 3fr 350px;
+    grid-template-columns: minmax(160px, 1fr) 3fr 400px;
     grid-template-areas:
     "header header header"
     "sidenav content aside"
     "footer footer footer";
-    grid-gap: 20px;
+    margin: 0 auto;
+    grid-gap: 30px;
 }
 
-/*responsive structure*/
-@media (max-width: 1440px) {
+/*structure responsive*/
+@media (max-width: 1500px) {
     .structure {
         grid-template-areas:
         "header header header"
@@ -46,58 +47,17 @@ body {
         "sidenav aside aside"
         "footer footer footer";
     }
-
-    .content {
-    }
-
-    .aside {
-        width: 860px;
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .newsletter, .about-us {
-        
-    }
-
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1000px) {
     .structure {
-        grid-template-areas: 
-        "header header header"
-        "sidenav sidenav sidenav"
-        "content content content"
-        "aside aside aside"
-        "footer footer footer"
-        ;
-    }
-
-    .sidenav {
-        display: flex;
-    }
-
-    .sidenav ul li {
-        flex: 1 0 60px;
-    }
-}
-
-@media (max-width: 860px) {
-    .structure {
-        grid-template-columns: 1fr;
-    }
-
-    .aside {
-        width: 100%;
-    }
-
-    .images-family {
-        max-width: 100%;
-        flex-direction: column;
-    }
-
-    .images-family img {
-        width: 100%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+        "header"
+        "sidenav"
+        "content"
+        "aside"
+        "footer";
     }
 }
 
@@ -105,228 +65,278 @@ body {
 /*header*/
 .header {
     grid-area: header;
+    padding: 20px 50px;
     background: linear-gradient(135deg, #f04349, #df4761);
+    color: white;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    padding: 20px;
 }
 
-.header h1{
-    font-family: 'Abril Fatface', cursive;
-    letter-spacing: 3px;
-    color: white;
-    font-size: 2.275em;
+.header h1 {
+    font-size: 3em;
 }
 
 .header nav ul {
     display: flex;
-    flex-wrap: wrap;
 }
 
-.header nav ul a {
+.header nav li a {
+    font-size: 1.2em;
     padding: 10px;
-    background: rgba(0,0,0,.10);
-    border-radius: 5px;
+    margin: 15px;
     color: white;
-    transition: all 0.4s;
+    border-radius: 5px;
+    background: rgba(0,0,0,.15);
+    transition: all .4s;
 }
 
-.header nav ul a:hover {
-    background: rgba(0,0,0,.30);
+.header nav li a:hover {
+    background: rgba(0,0,0,.45)
 }
 
-.header nav ul li + li {
-    margin-left: 20px;
+@media (max-width: 700px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header nav ul {
+        margin: 20px 0;
+    }
 }
+
+@media (max-width: 370px) {
+    .header nav li a {
+        margin: 5px;
+    }
+}
+
+
 
 /*sidenav*/
 .sidenav {
     grid-area: sidenav;
-    margin: 0 30px;
+    padding: 30px;
 }
 
-.sidenav ul a {
+.sidenav li a{
     display: block;
     max-width: 100px;
     min-width: 60px;
     padding: 30px;
-    margin: 0 auto;
     background: antiquewhite;
     border-radius: 5px;
     box-shadow: 3px 3px 5px #a3639ea1;
+    margin: 0 auto 20px auto;
     transition: all .4s;
 }
 
-.sidenav ul a:hover {
+.sidenav li a:hover {
     background: #df4761;
 }
 
-.sidenav ul li {
-    margin-bottom: 15px;
+
+.sidenav li:last-child {
+    margin-bottom: 0;
 }
 
-.sidenav ul li:last-child {
-    margin-bottom: 0px;
+@media (max-width: 1000px) {
+    .sidenav {
+        padding: 0 20px;    
+    }
+    
+    .sidenav ul {
+        display: flex;
+    }
+
+    .sidenav ul li {
+        flex: 1 0 60px;
+    }
+
+    .sidenav li a {
+        margin: 30px 30px 30px 0;
+    }
+}
+
+
+@media (max-width: 790px) {
+    .sidenav {
+        position: relative; 
+    }
+
+    .sidenav ul {
+        overflow-x: auto;
+    }
+
+
+    .sidenav::after {
+        content: '→';
+        position: absolute;
+        top: -15px;
+        right: 30px;
+        font-size: 2em;
+        color: #df4761;
+    }
 }
 
 /*content*/
 .content {
     grid-area: content;
-    max-width: 900px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    
-    padding:30px;
-    grid-gap: 20px;
+    max-width: 900px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+    margin: 30px;
+}
+
+.text-p {
+    font-size: 1.5em;
+    line-height: 1.4;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.671);
+}
+
+.music {
+    padding: 30px;
+    text-align: center;
+    font-family: "Volkorn", Georgia, serif;
+    background: #f04349;
+    margin: 0 auto;
+
+    font-size: 1.4em;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #a3639ea1;
+    font-style: italic;
+}
+
+.titulo {
+    font-size: 3em;
+    color: #df4761;
+    border-bottom: 4px solid #df4761;
+}
+
+.content span {
+    color: #df4761;
+}
+
+.images-family {
+    display: flex;
+}
+
+.images-family img + img{
+    flex: 1;
+    margin-left: 40px;
+}
+
+.noel-origin h1 {
+    font-size: 3em;
+    color: #df4761;
+    border-bottom: 4px solid #df4761;
+    margin-bottom: 30px;
+}
+
+
+.about-christmas p {
+    margin-bottom: 40px;
+}
+
+.christmas-tree {
+    grid-template-rows: span 2;
 }
 
 .wide {
     grid-column: 1 / -1;
 }
 
-.music {
-    padding: 30px;
-    text-align: center;
-    background: #f04349;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px #a3639ea1;
-    color: white;
-    font-size:1.3em;
-    margin: 0 auto 20px auto;
-    min-width: 300px;
-    font-style: italic;
-    font-family: "Volkorn", Georgia, serif;
+@media (max-width: 1500px) {
+    .christmas-tree {
+        height: 500px;
+    }
 }
 
-.music:before {
-    content: '“';
-}
-.music:after {
-    content: '”';
-}
 
-.content .titulo {
-    font-size: 3em;
-    margin: 30px 0 20px 0;
-    color: #df4761;
-    border-bottom: 4px solid #df4761;
-}
+@media (max-width: 770px) {
+    .christmas-tree, .about-christmas, .images-family, .noel-origin {
+        grid-column: 1 / -1;
+        margin: 0 auto;
+    }
 
-.content .about-christmas {
-    font-size: 1.5em;
-    line-height: 1.4;
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.671);
-    max-width: 500px;
-}
+    .images-family {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+    }
 
-.about-christmas span {
-    color: #df4761;
-}
+    .images-family img + img{
+        flex: 0;
+        margin: 0px;
+    }
 
-.content .about-christmas:last-child {
-    margin-bottom: 0px;
-}
-
-.content .about-christmas p {
-    margin-bottom: 40px;
-}
-
-.content .christmas-tree {
-    max-width: 300px;
-}
-
-.content .p-image {
-    margin: 40px 30px 10px;
-    font-size: 1.5em;
-    line-height: 1.4;
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.671);
-}
-
-.images-family {
-    max-width: 350px;
-    display: flex;
-}
-
-.images-family img{
-    margin: 30px;
-}
-
-.content .noel-origin h1{
-    font-size: 3em;
-    margin: 30px 0 20px 0;
-    color: #df4761;
-    border-bottom: 4px solid #df4761;
-}
-
-.content .noel-origin p {
-    font-size: 1.5em;
-    line-height: 1.4;
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.671);
-    margin-bottom: 50px;
-}
+}   
 
 
 /*aside*/
 .aside {
     grid-area: aside;
-    margin: 0 auto;
+    display: grid;
+    align-content: start;
 }
 
-.about-us, .newsletter{
-    display: block;
-    align-items: start;
-}
-
-.about-us img, legend, .newsletter img, legend{
-    min-width: 300px;
+.aside .about-us legend, .newsletter legend {
+    position: relative;
+    bottom: 40px;
+    padding: 15px;
+    text-align: center;
+    background: antiquewhite;
+    box-shadow:  3px 3px 5px #a3639ea1;
+    border-radius: 0px 0px 5px 5px;
+    transition: all .4s;
     cursor: pointer;
 }
 
-.about-us img:hover ~ legend{
-    background: #df4761;
-    color: white;
-}
-.about-us legend:hover{
+.aside img:hover ~ legend {
     background: #df4761;
     color: white;
 }
 
-.newsletter img:hover ~ legend{
-    background: #df4761;
-    color: white;
-}
-.newsletter legend:hover{
+.aside legend:hover {
     background: #df4761;
     color: white;
 }
 
-
-.about-us legend, .newsletter legend {
-    text-align: center;
-    background: antiquewhite;
-    padding: 15px 0px;
-    position: relative;
-    bottom: 50px;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 3px 3px 5px #a3639ea1;
-    transition: all .4s;
+.aside div {
+    margin: 0 30px 0px auto;
 }
+
+@media (max-width: 1500px) {
+    .aside {
+        display: flex;
+    }
+
+    .aside div {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 770px) {
+    .aside {
+        flex-direction: column;
+    }
+}
+
 
 /*footer*/
 .footer {
     grid-area: footer;
     padding: 30px;
-    text-align: center;
     background: linear-gradient(135deg, #f04349, #df4761);
 }
 
-.footer p{
-    font-size: 1.5em;
+.footer p {
+    font-size: 2em;
+    text-align: center;
     font-weight: bold;
     color: white;
 }
